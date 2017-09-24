@@ -1,0 +1,3 @@
+show interfaces
+show chassis hardware
+show version
