@@ -47,7 +47,6 @@ def Main():
                 if crt.Screen.WaitForString(">"):
                     break
             row = crt.Screen.CurrentRow
-            prompt = crt.Screen.Get(row, 0, row, crt.Screen.CurrentColumn - 1)
             prompt = ">"
             check = crt.Screen.Get(row,0,row,7 )
             readline = crt.Screen.Get(row, 0,row,crt.Screen.CurrentColumn -2)
@@ -55,10 +54,10 @@ def Main():
             crt.Session.LogFileName = (g_strPath + "/%D-%M-%Y/" + readline + ".txt")
             crt.Session.Log(True,False,True)
             crt.Screen.Send("\r")
-            crt.Screen.WaitForString(prompt)
+            crt.Screen.WaitForString(prompt,0)
             for cmd in vCommandsList:
                 crt.Screen.Send(cmd + " |no-more \n")
-                crt.Screen.WaitForString(prompt)
+                crt.Screen.WaitForString(prompt,0)
             crt.Session.Disconnect()
             while crt.Session.Connected == True:
                 crt.Sleep(100)
