@@ -47,7 +47,8 @@ def Main():
                 if crt.Screen.WaitForString(">"):
                     break
             row = crt.Screen.CurrentRow
-            prompt = ">"
+            prompt = crt.Screen.Get(row, 0, row, crt.Screen.CurrentColumn - 1)
+            #prompt = ">"
             check = crt.Screen.Get(row,0,row,7 )
             readline = crt.Screen.Get(row, 0,row,crt.Screen.CurrentColumn -2)
             crt.Session.Log(False)
